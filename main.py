@@ -1,3 +1,4 @@
+import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
@@ -83,7 +84,9 @@ async def callbacks(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # -----------------------------------------
 # Run Bot
 # -----------------------------------------
-app = ApplicationBuilder().token("8394475180:AAHQThYadn8eZlv1xe6Jn63-KPWLedhyXCM").build()
+TOKEN = os.environ.get("8394475180:AAHQThYadn8eZlv1xe6Jn63-KPWLedhyXCM")  # اجعلي التوكن متغير بيئة على Render
+
+app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CallbackQueryHandler(callbacks))

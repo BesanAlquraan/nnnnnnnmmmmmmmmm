@@ -84,7 +84,11 @@ async def callbacks(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # -----------------------------------------
 # Run Bot
 # -----------------------------------------
-TOKEN = os.environ.get("8394475180:AAHQThYadn8eZlv1xe6Jn63-KPWLedhyXCM")  # اجعلي التوكن متغير بيئة على Render
+# استدعاء التوكن من متغير البيئة على Render
+TOKEN = os.environ.get("TOKEN")  # "TOKEN" هو اسم متغير البيئة على Render
+
+if not TOKEN:
+    raise ValueError("No BOT TOKEN found. Please set TOKEN environment variable on Render.")
 
 app = ApplicationBuilder().token(TOKEN).build()
 
